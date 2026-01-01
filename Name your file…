@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>🎰 Tragamonedas</title>
+<style>
+body {
+  font-family: Arial;
+  text-align: center;
+  background: #121212;
+  color: white;
+}
+.slot {
+  font-size: 60px;
+  margin: 20px;
+}
+button {
+  font-size: 20px;
+  padding: 10px 20px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 10px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎰 GanaYa</h1>
+<h2 id="puntos">Puntos: 100</h2>
+
+<div class="slot">
+  <span id="s1">🍒</span>
+  <span id="s2">🍋</span>
+  <span id="s3">⭐</span>
+</div>
+
+<button onclick="girar()">🎰 Girar</button>
+
+<script>
+let puntos = 100;
+let simbolos = ["🍒","🍋","⭐","🔔"];
+
+function girar() {
+  if (puntos < 10) {
+    alert("No tienes puntos");
+    return;
+  }
+
+  puntos -= 10;
+
+  let a = simbolos[Math.floor(Math.random()*4)];
+  let b = simbolos[Math.floor(Math.random()*4)];
+  let c = simbolos[Math.floor(Math.random()*4)];
+
+  document.getElementById("s1").innerText = a;
+  document.getElementById("s2").innerText = b;
+  document.getElementById("s3").innerText = c;
+
+  if (a === b && b === c) {
+    puntos += 50;
+    alert("🎉 GANASTE 50 puntos");
+  }
+
+  document.getElementById("puntos").innerText = "Puntos: " + puntos;
+}
+</script>
+
+</body>
+</html>
